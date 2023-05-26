@@ -28,7 +28,7 @@ namespace Laboratorio.CRUD.Company.Application.Controllers
             return Execute(() => _companyService.Add<AddCompanyModel, CompanyModel, CompanyValidator>(model));
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Update([FromBody] UpdateCompanyModel model)
         {
             if (model == null)

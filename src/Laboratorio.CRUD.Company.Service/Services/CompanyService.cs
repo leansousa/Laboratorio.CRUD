@@ -28,7 +28,10 @@ namespace Laboratorio.CRUD.Company.Service.Services
         {
             CompanyEntity entity = _mapper.Map<CompanyEntity>(inputModel);
 
-            Activator.CreateInstance<TValidator>().Validate(entity);
+            Activator.CreateInstance<TValidator>().ValidateAndThrow(entity);
+
+            var exists = _companyRepository.NameExists(0, entity.Name ?? "");
+            if (exists) throw new DuplicateException("Company Exists");
 
             var companySize = _companySizeRepository.GetById(entity.SizeId) ?? throw new NotFoundException($"Company Size Id {entity.SizeId} is invalid");
 
@@ -81,7 +84,10 @@ namespace Laboratorio.CRUD.Company.Service.Services
         {
             CompanyEntity entity = _mapper.Map<CompanyEntity>(inputModel);
 
-            Activator.CreateInstance<TValidator>().Validate(entity);
+            Activator.CreateInstance<TValidator>().ValidateAndThrow(entity);
+
+            var exists = _companyRepository.NameExists(entity.Id, entity.Name ?? "");
+            if (exists) throw new DuplicateException("Company Exists");
 
             var companySize = _companySizeRepository.GetById(entity.SizeId) ?? throw new NotFoundException($"Company Size Id {entity.SizeId} is invalid");
 
