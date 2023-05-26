@@ -1,10 +1,6 @@
-using AutoMapper;
-using Laboratorio.CRUD.Company.Application.AutoMapper;
 using Laboratorio.CRUD.Company.Domain.Entities;
 using Laboratorio.CRUD.Company.Domain.Interfaces.Base;
 using Laboratorio.CRUD.Company.Infra.Data.Context;
-using Laboratorio.CRUD.Company.Infra.Data.DBClient;
-using Laboratorio.CRUD.Company.Infra.Data.Repository;
 using Laboratorio.CRUD.Company.Infra.Data.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,10 +11,10 @@ namespace Laboratorio.CRUD.Company.Tests
     [TestCaseOrderer(ordererTypeName: "Laboratorio.CRUD.Company.Tests.OrderHelper", ordererAssemblyName: "Laboratorio.CRUD.Company.Tests")]
     public class UnitTestOfCompanySizeRepository
     {
-
         private readonly DbContextOptionsBuilder<SqlServerContext> _dbContextOptions;
         private readonly IBaseRepository<CompanySizeEntity> _repository;
-        private readonly IConfiguration _configuration;        
+        private readonly IConfiguration _configuration;
+
         public UnitTestOfCompanySizeRepository()
         {
             _configuration = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory).AddJsonFile("appsettings.json", false, true).Build();
@@ -33,8 +29,6 @@ namespace Laboratorio.CRUD.Company.Tests
                 SqlServerContext context = new(_dbContextOptions.Options);
                 _repository = new BaseRepository<CompanySizeEntity>(context);
             }
-
-
         }
 
         [Fact]
@@ -52,6 +46,5 @@ namespace Laboratorio.CRUD.Company.Tests
             Assert.NotNull(result);
             Assert.True(result.Description == "Grande");
         }
-
     }
 }

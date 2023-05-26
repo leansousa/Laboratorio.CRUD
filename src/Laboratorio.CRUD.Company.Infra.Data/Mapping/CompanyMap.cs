@@ -18,9 +18,7 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Mapping
                 .HasMaxLength(60)
                 .HasColumnType("VARCHAR");
 
-
             builder.HasOne(d => d.Size).WithMany().OnDelete(DeleteBehavior.NoAction).HasForeignKey(s => s.SizeId);
-
         }
     }
 }

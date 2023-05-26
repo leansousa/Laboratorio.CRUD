@@ -1,7 +1,6 @@
 ﻿using Laboratorio.CRUD.Company.Domain.Entities.Base;
 using Laboratorio.CRUD.Company.Domain.Interfaces.Base;
 using Laboratorio.CRUD.Company.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
 
 namespace Laboratorio.CRUD.Company.Infra.Data.Repository.Base
 {
@@ -15,7 +14,7 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Repository.Base
         }
 
         public virtual void Insert(TEntity obj)
-        {            
+        {
             _context.Set<TEntity>().Add(obj);
             _context.SaveChanges();
         }

@@ -67,14 +67,12 @@ namespace Laboratorio.CRUD.Company.Service.Services
             return outputModel;
         }
 
-
         public IEnumerable<TOutputModel> GetPaginated<TOutputModel>(int page) where TOutputModel : class
         {
             var results = _companyRepository.GetPaginated(page);
 
             var outputModels = results.Select(s => _mapper.Map<TOutputModel>(s));
             return outputModels;
-
         }
 
         public TOutputModel Update<TInputModel, TOutputModel, TValidator>(TInputModel inputModel)

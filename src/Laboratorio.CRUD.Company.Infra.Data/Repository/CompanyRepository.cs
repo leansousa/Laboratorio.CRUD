@@ -6,15 +6,14 @@ using Laboratorio.CRUD.Company.Infra.Data.DBClient;
 using Laboratorio.CRUD.Company.Infra.Data.Repository.Base;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Data;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Laboratorio.CRUD.Company.Infra.Data.Repository
 {
     public class CompanyRepository : BaseRepository<CompanyEntity>, ICompanyRepository
     {
         private readonly SqlServerConnection _sqlServerConnection;
+
         public CompanyRepository(SqlServerContext context, SqlServerConnection sqlServerConnection) : base(context)
         {
             _sqlServerConnection = sqlServerConnection;
@@ -29,7 +28,7 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Repository
         {
             var query = @"
                             SELECT  count('x') as row_qtd
-                              FROM Companies c                               
+                              FROM Companies c
                             where c.id <> @p_id and c.name = @p_name
                          ";
 
@@ -39,7 +38,7 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Repository
             {
                 var command = new SqlCommand(query, conn);
 
-                SqlParameter paramName = new("p_name",name );
+                SqlParameter paramName = new("p_name", name);
                 SqlParameter paramId = new("p_id", id);
 
                 command.Parameters.Add(paramName);
@@ -47,14 +46,12 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Repository
 
                 var dataReader = command.ExecuteReader();
 
-
                 while (dataReader.Read())
                 {
                     var qtd = Convert.ToInt32(dataReader.GetValue("row_qtd"));
 
                     if (qtd > 0)
                         exists = true;
-
                 }
                 dataReader.Close();
                 command.Dispose();
@@ -79,7 +76,6 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Repository
             using (var conn = _sqlServerConnection.CreateConnection())
             {
                 var command = new SqlCommand(query, conn);
-
 
                 SqlParameter paramPage = new("Pag", page);
                 SqlParameter paramReg = new("RegPorPagina", 10);

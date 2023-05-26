@@ -11,11 +11,9 @@ namespace Laboratorio.DDD.Company.Service.Validators
                 .NotEmpty().WithMessage("Name is required.")
                 .NotNull().WithMessage("Name is required.");
 
-            
             RuleFor(c => c.SizeId)
                 .NotEmpty().WithMessage("Company Size is required.")
                 .NotNull().WithMessage("Company Size is required.");
-            
         }
     }
 }

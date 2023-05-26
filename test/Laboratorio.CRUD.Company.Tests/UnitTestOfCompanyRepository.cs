@@ -14,12 +14,12 @@ namespace Laboratorio.CRUD.Company.Tests
     [TestCaseOrderer(ordererTypeName: "Laboratorio.CRUD.Company.Tests.OrderHelper", ordererAssemblyName: "Laboratorio.CRUD.Company.Tests")]
     public class UnitTestOfCompanyRepository
     {
-
         private readonly DbContextOptionsBuilder<SqlServerContext> _dbContextOptions;
         private readonly ICompanyRepository _repository;
         private static IMapper? _mapper;
         private readonly IConfiguration _configuration;
         private static int idToTest;
+
         public UnitTestOfCompanyRepository()
         {
             _configuration = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory).AddJsonFile("appsettings.json", false, true).Build();
@@ -46,8 +46,6 @@ namespace Laboratorio.CRUD.Company.Tests
 
                 _repository = new CompanyRepository(context, connection);
             }
-
-
         }
 
         [Fact]
@@ -87,17 +85,15 @@ namespace Laboratorio.CRUD.Company.Tests
 
             Assert.True(result.Name == vo.Name && result.Size.Id == vo.SizeId);
         }
-   
+
         [Fact]
         public void CTU_003_ExcluirEmpresaComSucesso()
         {
-
             _repository.Delete(idToTest);
 
             var result = _repository.GetById(idToTest);
 
             Assert.Null(result);
-
         }
 
         [Fact]
@@ -107,7 +103,6 @@ namespace Laboratorio.CRUD.Company.Tests
 
             Assert.NotNull(result);
             Assert.True(result.Count() == 10);
-
         }
 
         [Fact]
@@ -117,8 +112,6 @@ namespace Laboratorio.CRUD.Company.Tests
 
             Assert.NotNull(result);
             Assert.False(result.Any());
-
         }
-
     }
 }

@@ -7,7 +7,6 @@ using Laboratorio.CRUD.Company.Infra.Data.Repository;
 using Laboratorio.CRUD.Company.Infra.Data.Repository.Base;
 using Laboratorio.CRUD.Company.Service.Services;
 using Laboratorio.CRUD.Company.Service.Services.Base;
-using System.Runtime.CompilerServices;
 
 namespace Laboratorio.CRUD.Company.Application.Extensions
 {
@@ -21,9 +20,6 @@ namespace Laboratorio.CRUD.Company.Application.Extensions
             });
 
             services.AddSingleton(mapper.CreateMapper());
-
-            //services.AddScoped<IBaseRepository<CompanyEntity>, BaseRepository<CompanyEntity>>();
-            //services.AddScoped<IBaseService<CompanyEntity>, BaseService<CompanyEntity>>();
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICompanyService, CompanyService>();

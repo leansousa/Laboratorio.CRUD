@@ -7,6 +7,7 @@ namespace Laboratorio.CRUD.Company.Application.Models
         public string? Name { get; set; }
         public CompanySizeModel Size { get; set; }
 
-        public CompanyModel() { Size = new(); }
+        public CompanyModel()
+        { Size = new(); }
     }
 }

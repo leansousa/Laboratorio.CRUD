@@ -7,6 +7,7 @@ namespace Laboratorio.CRUD.Company.Domain.Interfaces
     public interface ICompanyRepository : IBaseRepository<CompanyEntity>
     {
         IEnumerable<CompanyPaginatedDTO> GetPaginated(int page);
+
         bool NameExists(int id, string name);
     }
 }

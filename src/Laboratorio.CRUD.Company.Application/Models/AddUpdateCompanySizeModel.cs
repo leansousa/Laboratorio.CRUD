@@ -3,6 +3,6 @@
 namespace Laboratorio.CRUD.Company.Application.Models
 {
     public class AddUpdateCompanySizeModel : BaseModel
-    {        
+    {
     }
 }

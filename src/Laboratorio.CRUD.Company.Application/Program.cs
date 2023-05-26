@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-
 //EF
 string connection = builder.Configuration["DBConnection:SQLServerConnectionString"] ?? "";
 builder.Services.AddDbContext<SqlServerContext>(options =>

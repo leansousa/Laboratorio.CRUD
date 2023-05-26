@@ -6,8 +6,12 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Context
 {
     public class SqlServerContext : DbContext
     {
-        public SqlServerContext() { }
-        public SqlServerContext(DbContextOptions<SqlServerContext> options) : base(options) { }
+        public SqlServerContext()
+        { }
+
+        public SqlServerContext(DbContextOptions<SqlServerContext> options) : base(options)
+        {
+        }
 
         public DbSet<CompanyEntity> Companies { get; set; }
         public DbSet<CompanySizeEntity> CompanySizes { get; set; }
@@ -32,8 +36,8 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Context
             }
         }
 
-
         #region Private Methods
+
         private static void GenerateCompanySize(ref ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CompanySizeEntity>().HasData(new CompanySizeEntity
@@ -53,7 +57,6 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Context
                 Id = 3,
                 Description = "Grande",
             });
-
         }
 
         private static void GenerateCompany(ref ModelBuilder modelBuilder)
@@ -72,6 +75,7 @@ namespace Laboratorio.CRUD.Company.Infra.Data.Context
                 });
             }
         }
-        #endregion
+
+        #endregion Private Methods
     }
 }

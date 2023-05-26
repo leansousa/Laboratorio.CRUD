@@ -11,12 +11,12 @@ namespace Laboratorio.CRUD.Company.Application.AutoMapper
         {
             CreateMap<AddCompanyModel, CompanyEntity>();
             CreateMap<UpdateCompanyModel, CompanyEntity>();
-            CreateMap<CompanyEntity, CompanyModel>().ForMember(d => d.Size, opt => opt.MapFrom(s => s.Size));          
+            CreateMap<CompanyEntity, CompanyModel>().ForMember(d => d.Size, opt => opt.MapFrom(s => s.Size));
             CreateMap<CompanySizeEntity, CompanySizeModel>();
             CreateMap<CompanySizeModel, CompanySizeEntity>();
 
             CreateMap<CompanySizeEntity, AddUpdateCompanySizeModel>();
-            CreateMap<AddUpdateCompanySizeModel, CompanySizeEntity >();
+            CreateMap<AddUpdateCompanySizeModel, CompanySizeEntity>();
             CreateMap<CompanyPaginatedDTO, GridCompanyModel>();
         }
     }

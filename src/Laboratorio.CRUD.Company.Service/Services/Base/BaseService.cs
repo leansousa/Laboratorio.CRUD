@@ -15,6 +15,7 @@ namespace Laboratorio.CRUD.Company.Service.Services.Base
             _baseRepository = baseRepository;
             _mapper = mapper;
         }
+
         public virtual TOutputModel Add<TInputModel, TOutputModel, TValidator>(TInputModel inputModel)
             where TInputModel : class
             where TOutputModel : class

@@ -5,6 +5,7 @@
         public string? Name { get; set; }
         public AddUpdateCompanySizeModel Size { get; set; }
 
-        public AddCompanyModel() { Size = new(); }
+        public AddCompanyModel()
+        { Size = new(); }
     }
 }
